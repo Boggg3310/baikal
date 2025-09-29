@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Озеро Байкал - Жемчужина Сибири</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		body {
+			background-color: #f0f8ff;
+			color: #333;
+			line-height: 1.6;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Стили для шапки */
+		header {
+			background: linear-gradient(to right, #1e5799, #207cca);
+			color: white;
+			padding: 1rem 0;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.header-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		/* Стили для навигации и выпадающего меню */
+		nav {
+			position: relative;
+		}
+
+		.menu {
+			list-style: none;
+			display: flex;
+		}
+
+		.menu li {
+			position: relative;
+			margin-left: 20px;
+		}
+
+		.menu a {
+			color: white;
+			text-decoration: none;
+			padding: 10px 15px;
+			display: block;
+			transition: all 0.3s ease;
+			border-radius: 4px;
+		}
+
+		.menu a:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		/* Стили для выпадающего меню */
+		.submenu {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: white;
+			min-width: 200px;
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+			border-radius: 4px;
+			z-index: 1000;
+		}
+
+		.submenu li {
+			margin: 0;
+			width: 100%;
+		}
+
+		.submenu a {
+			color: #333;
+			padding: 12px 16px;
+			border-bottom: 1px solid #f1f1f1;
+		}
+
+		.submenu a:hover {
+			background-color: #f1f1f1;
+		}
+
+		.menu li:hover>.submenu {
+			display: block;
+		}
+
+		/* Стили для подменю второго уровня */
+		.submenu .submenu {
+			top: 0;
+			left: 100%;
+		}
+
+		/* Основной контент */
+		.hero {
+			background: url('https://glampspace.ru/wp-content/uploads/2025/03/i-2.webp') no-repeat center center/cover;
+			height: 500px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			margin-bottom: 40px;
+		}
+
+		.hero::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.hero-content {
+			text-align: center;
+			color: white;
+			z-index: 1;
+			max-width: 800px;
+			padding: 0 20px;
+		}
+
+		.hero h1 {
+			font-size: 3rem;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+
+		.hero p {
+			font-size: 1.2rem;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+		}
+
+		section {
+			margin-bottom: 50px;
+			background-color: white;
+			padding: 30px;
+			border-radius: 8px;
+			box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		h2 {
+			color: #1e5799;
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #f0f8ff;
+		}
+
+		p {
+			margin-bottom: 15px;
+		}
+
+		.facts-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		.fact-card {
+			background-color: #f8faff;
+			padding: 20px;
+			border-radius: 8px;
+			border-left: 4px solid #1e5799;
+		}
+
+		.fact-card h3 {
+			color: #1e5799;
+			margin-bottom: 10px;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 20px;
+			margin-top: 20px;
+		}
+
+		.gallery-item {
+			position: relative;
+			height: 200px;
+			overflow: hidden;
+			border-radius: 8px;
+		}
+
+		.gallery-item img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+
+		.gallery-item:hover img {
+			transform: scale(1.05);
+		}
+
+		/* Стили для футера */
+		footer {
+			background: linear-gradient(to right, #1e5799, #207cca);
+			color: white;
+			text-align: center;
+			padding: 30px 0;
+			margin-top: 50px;
+		}
+
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.footer-links {
+			display: flex;
+			list-style: none;
+			margin: 20px 0;
+		}
+
+		.footer-links li {
+			margin: 0 15px;
+		}
+
+		.footer-links a {
+			color: white;
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			text-decoration: underline;
+		}
+
+		/* Адаптивность */
+		@media (max-width: 768px) {
+			.header-content {
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.menu {
+				margin-top: 20px;
+				flex-direction: column;
+			}
+
+			.menu li {
+				margin: 5px 0;
+			}
+
+			.hero h1 {
+				font-size: 2rem;
+			}
+
+			.facts-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Шапка сайта с навигацией -->
+	<header>
+		<div class="container header-content">
+			<div class="logo">Байкал</div>
+			<nav>
+				<ul class="menu">
+					<li><a href="#">Главная</a></li>
+					<li>
+						<a href="#">О Байкале</a>
+						<ul class="submenu">
+							<li><a href="#geography">География</a></li>
+							<li><a href="#facts">Факты</a></li>
+							<li><a href="#ecology">Экология</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Туризм</a>
+						<ul class="submenu">
+							<li><a href="#seasons">Лучшие сезоны</a></li>
+							<li><a href="#activities">Активности</a></li>
+							<li>
+								<a href="#">Достопримечательности</a>
+								<ul class="submenu">
+									<li><a href="#">Ольхон</a></li>
+									<li><a href="#">КБЖД</a></li>
+									<li><a href="#">Листвянка</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="#gallery">Галерея</a></li>
+					<li><a href="#contacts">Контакты</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- Герой-секция с изображением Байкала -->
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Озеро Байкал</h1>
+			<p>Самое глубокое и древнее озеро на планете, объект Всемирного наследия ЮНЕСКО</p>
+		</div>
+	</section>
+
+	<!-- Основной контент -->
+	<main class="container">
+		<!-- Секция введения -->
+		<section id="intro">
+			<h2>Уникальное озеро Байкал</h2>
+			<p>Байкал — озеро тектонического происхождения в южной части Восточной Сибири, самое глубокое озеро на
+				планете, крупнейший природный резервуар пресной воды и самое большое по площади пресноводное озеро
+				Евразии:cite[3].</p>
+			<p>Озеро и прибрежные территории отличаются уникальным разнообразием флоры и фауны. Большая часть видов
+				животных является эндемиками, то есть обитают только здесь:cite[3].</p>
+			<p>Байкал также называют "Священным морем" - он обладает неповторимой энергетикой и является одним из самых
+				популярных мест для туризма в России:cite[7].</p>
+		</section>
+
+		<!-- Секция географии -->
+		<section id="geography">
+			<h2>География и гидрология</h2>
+			<p>Байкал находится в центре Азии на границе Иркутской области и Республики Бурятия. Озеро протянулось с
+				юго-запада на северо-восток на 636 км в виде гигантского полумесяца. Ширина водоёма колеблется в
+				пределах от 24 до 79 км:cite[3].</p>
+
+			<div class="facts-grid">
+				<div class="fact-card">
+					<h3>Площадь</h3>
+					<p>31 722 км² — седьмое место в мире среди крупнейших озёр:cite[3]</p>
+				</div>
+				<div class="fact-card">
+					<h3>Глубина</h3>
+					<p>1642 м — максимальная глубина, самое глубокое озеро на Земле:cite[3]</p>
+				</div>
+				<div class="fact-card">
+					<h3>Объем воды</h3>
+					<p>23 615 км³ — около 19% мировых запасов озёрной пресной воды:cite[3]</p>
+				</div>
+				<div class="fact-card">
+					<h3>Возраст</h3>
+					<p>25-35 миллионов лет — одно из самых древних озер мира:cite[7]</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Секция уникальности -->
+		<section id="facts">
+			<h2>Уникальные особенности</h2>
+			<p>В Байкал впадает более 300 рек и ручьёв, а вытекает только одна река — Ангара:cite[3].</p>
+			<p>Вода в Байкале необычайно прозрачна — можно видеть предметы на глубине до 40 метров. Байкальский лед
+				также очень прозрачен и может достигать толщины 1,5-2 метра:cite[7].</p>
+			<p>Чистота воды в Байкале поддерживается деятельностью микроскопического рачка эпишуры, который потребляет
+				органику, пропуская воду через свой организм. Этот эндемик формирует до 90% биомассы водоёма:cite[3].
+			</p>
+
+			<h3 style="margin-top: 20px;">Животный мир</h3>
+			<p>Животный мир Байкала насчитывает около 2600 видов, из них более 1000 — эндемики. Среди самых известных —
+				байкальская нерпа, единственный вид тюленя, живущий в пресной воде, и рыба омуль:cite[7].</p>
+		</section>
+
+		<!-- Секция туризма -->
+		<section id="tourism">
+			<h2>Туризм на Байкале</h2>
+			<p>Байкал является очень привлекательным местом для экотуризма, активного, познавательного и
+				лечебно-оздоровительного туризма:cite[7].</p>
+
+			<h3>Популярные направления:</h3>
+			<ul>
+				<li><strong>Остров Ольхон</strong> — крупнейший остров Байкала с нетронутой природой и богатой
+					историей:cite[7]</li>
+				<li><strong>Кругобайкальская железная дорога</strong> — историческая железная дорога с прекрасными
+					видами на озеро:cite[7]</li>
+				<li><strong>Листвянка</strong> — посёлок у истока Ангары с музеями и развитой инфраструктурой</li>
+				<li><strong>Баргузинский залив</strong> — самое тёплое место на Байкале с песчаными пляжами</li>
+			</ul>
+
+			<h3>Сезоны посещения</h3>
+			<p>Летний сезон (июнь-август) идеален для пеших походов, круизов и пляжного отдыха. Зимний сезон
+				(февраль-март) предлагает уникальную возможность увидеть прозрачный байкальский лёд, заняться подлёдной
+				рыбалкой и совершить поездки по льду:cite[7].</p>
+		</section>
+
+		<!-- Секция галереи -->
+		<section id="gallery">
+			<h2>Галерея Байкала</h2>
+			<div class="gallery">
+				<div class="gallery-item">
+					<img src="https://glampspace.ru/wp-content/uploads/2025/03/i-2.webp" alt="Байкал летом">
+                </div>
+					<div class="gallery-item">
+						<img src="https://avatars.mds.yandex.net/i?id=da368205710b6d78a611008d2087b31c_l-5247763-images-thumbs&n=13" alt="Байкал зимой">
+                </div>
+						<div class="gallery-item">
+							<img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_68162e208c6d3504e92fd391_68162e937535b749ad11882e/scale_1200" alt="Остров Ольхон">
+                </div>
+						</div>
+		</section>
+	</main>
+
+	<!-- Футер -->
+	<footer id="contacts">
+		<div class="container footer-content">
+			<h2>Контакты</h2>
+			<p>Для получения дополнительной информации о туризме на Байкале:</p>
+			<ul class="footer-links">
+				<li><a href="https://ru.wikipedia.org/wiki/Байкал" target="_blank">Статья в Википедии</a></li>
+				<li><a href="#">Туристические компании</a></li>
+				<li><a href="#">Размещение</a></li>
+				<li><a href="#">Экскурсии</a></li>
+			</ul>
+			<p>© 2023 Озеро Байкал. Все права защищены.</p>
+		</div>
+	</footer>
+</body>
+
+</html>
